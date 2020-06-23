@@ -80,10 +80,6 @@ class MainActivity : BaseActivity() {
                 vIATRecord.setText(bufferIAT.toString())
             }
 
-            override fun onEvent(p0: Int, p1: Int, p2: Int, p3: Bundle?) {
-            }
-
-
             override fun onEndOfSpeech() {
                 bufferIAT.append("--结束听写--\n\n")
                 vIATRecord.setText(bufferIAT.toString())
