@@ -68,12 +68,18 @@ class WakeManage(context: Context) {
 
     }
     fun onStop(){
+        if (_Wakeuper== null) {
+            return
+        }
         if (_Wakeuper!!.isListening) {
             _Wakeuper!!.stopListening()
         }
     }
 
     fun onDestroy(){
+        if (_Wakeuper== null) {
+            return
+        }
         if (_Wakeuper!!.isListening) {
             _Wakeuper!!.stopListening()
         }

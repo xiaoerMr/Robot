@@ -6,6 +6,8 @@ import com.iflytek.cloud.SpeechError
 import com.iflytek.cloud.WakeuperResult
 import com.sai.robot.iat.IATManager
 import com.sai.robot.iat.MyRecognizerListener
+import com.sai.robot.tts.MySynthesizerListener
+import com.sai.robot.tts.TTSManager
 import com.sai.robot.wake.MyWakeuperListener
 import com.sai.robot.wake.WakeManage
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,6 +16,7 @@ import org.json.JSONObject
 class MainActivity : BaseActivity() {
     lateinit var mWakeManager:WakeManage
     lateinit var _iat:IATManager
+    lateinit var _tts:TTSManager
     val bufferWake:StringBuffer= StringBuffer();
     val bufferIAT:StringBuffer= StringBuffer();
     var isStartIAT = false
@@ -36,7 +39,29 @@ class MainActivity : BaseActivity() {
         vWakeUp.setOnClickListener { startWake()}
         //语音听写
         vIAT.setOnClickListener { startIAT() }
+        vTTS.setOnClickListener { startTTS("山东飞机上飞机哦噻飞机上的减肥啦是的风景三闾大夫就是东方就死哦东方惊悚地方就是大家发来的科技发达") }
 
+    }
+    private fun startTTS(msg:String){
+            _tts = TTSManager()
+            _tts.builfTTs(this)
+
+        _tts.start(msg,object : MySynthesizerListener {
+            override fun onSpeakBegin() {
+                vTTS.setText("---开始阅读--")
+            }
+
+            override fun onSpeakProgress(percent: Int, beginPos: Int, endPos: Int) {
+                super.onSpeakProgress(percent, beginPos, endPos)
+                vTTS.setText("---阅读进度--${percent}")
+            }
+
+
+            override fun onCompleted(p0: SpeechError?) {
+                vTTS.setText("--结束-开始阅读--")
+            }
+
+        })
     }
 
     private fun startIAT(){

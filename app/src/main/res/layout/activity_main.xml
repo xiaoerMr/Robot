@@ -33,6 +33,13 @@
         android:layout_height="wrap_content"
         android:text="开始听写" />
 
+    <Button
+        android:id="@+id/vTTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="开始阅读" />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="0dp"

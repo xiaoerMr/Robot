@@ -45,12 +45,18 @@ val TAG = "-IATManager-"
 
 
     fun onStop(){
+        if (_mIat == null) {
+            return
+        }
         if (_mIat!!.isListening) {
             _mIat!!.stopListening()
         }
     }
 
     fun onDestory(){
+        if (_mIat == null) {
+            return
+        }
         if (_mIat!!.isListening) {
             _mIat!!.stopListening()
         }
