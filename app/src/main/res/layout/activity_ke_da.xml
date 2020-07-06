@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".KeDaActivity">
+
+    <Button
+        android:id="@+id/vWakeUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始唤醒" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/vRecord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="-----" />
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/vIAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始听写" />
+
+    <Button
+        android:id="@+id/vTTS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="开始阅读" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/vIATRecord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="-----" />
+
+    </ScrollView>
+</LinearLayout>
