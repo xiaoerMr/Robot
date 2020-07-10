@@ -10,58 +10,63 @@ import com.iflytek.cloud.SynthesizerListener
 import java.io.File
 
 class TTSManager {
-    var TAG ="-TTSManager-"
-var  _mTts:SpeechSynthesizer?=null
+    var TAG = "-TTSManager-"
+    private var _mTts: SpeechSynthesizer? = null
 
-    fun  builfTTs(context: Context){
-        _mTts = SpeechSynthesizer.createSynthesizer(context, InitListener{
-            Log.d(TAG,"文字阅读器-初始化=${it}")
+    fun builfTTs(context: Context) {
+        _mTts = SpeechSynthesizer.createSynthesizer(context, InitListener {
+            Log.d(TAG, "文字阅读器-初始化=${it}")
         })
 
-        var Path = "${context.getExternalFilesDir(Environment.DIRECTORY_MOVIES)!!.absolutePath}${File.separator}"
+        var Path =
+            "${context.getExternalFilesDir(Environment.DIRECTORY_MOVIES)!!.absolutePath}${File.separator}"
 
-        // 清空参数
-        _mTts!!.setParameter(SpeechConstant.PARAMS, null)
-        _mTts!!.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD)
-        //支持实时音频返回，仅在synthesizeToUri条件下支持
-        _mTts!!.setParameter(SpeechConstant.TTS_DATA_NOTIFY, "1")
-        //设置在线合成发音人 xiaoyan aisxping aisjinger
-        _mTts!!.setParameter(SpeechConstant.VOICE_NAME, "aisjinger")
-        //设置合成语速
-        _mTts!!.setParameter(SpeechConstant.SPEED, "50")
-        //设置合成音调
-        _mTts!!.setParameter(SpeechConstant.PITCH, "50")
-        //设置合成音量
-        _mTts!!.setParameter(SpeechConstant.VOLUME,"50")
-        //设置播放器音频流类型
-        _mTts!!.setParameter(SpeechConstant.STREAM_TYPE, "3")
-        // 设置播放合成音频打断音乐播放，默认为true
-        _mTts!!.setParameter(SpeechConstant.KEY_REQUEST_FOCUS, "false");
+        _mTts?.let {
+            // 清空参数
 
-        // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
-        _mTts!!.setParameter(SpeechConstant.AUDIO_FORMAT, "pcm");
-        _mTts!!.setParameter(SpeechConstant.TTS_AUDIO_PATH, "${Path}/msc/tts.pcm");
+            it.setParameter(SpeechConstant.PARAMS, null)
+            it.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD)
+            //支持实时音频返回，仅在synthesizeToUri条件下支持
+            it.setParameter(SpeechConstant.TTS_DATA_NOTIFY, "1")
+            //设置在线合成发音人 xiaoyan aisxping aisjinger
+            it.setParameter(SpeechConstant.VOICE_NAME, "aisjinger")
+            //设置合成语速
+            it.setParameter(SpeechConstant.SPEED, "50")
+            //设置合成音调
+            it.setParameter(SpeechConstant.PITCH, "50")
+            //设置合成音量
+            it.setParameter(SpeechConstant.VOLUME, "50")
+            //设置播放器音频流类型
+            it.setParameter(SpeechConstant.STREAM_TYPE, "3")
+            // 设置播放合成音频打断音乐播放，默认为true
+            it.setParameter(SpeechConstant.KEY_REQUEST_FOCUS, "false");
+
+            // 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
+            it.setParameter(SpeechConstant.AUDIO_FORMAT, "pcm");
+            it.setParameter(SpeechConstant.TTS_AUDIO_PATH, "${Path}/msc/tts.pcm");
+
+        }
 
     }
-    fun start(msg:String,listener : SynthesizerListener){
-        _mTts!!.startSpeaking(msg, listener);
+
+    fun start(msg: String, listener: SynthesizerListener) {
+        _mTts?.startSpeaking(msg, listener);
     }
 
-    fun stop (){
-        if (_mTts == null) {
-            return
-        }
-        if (_mTts!!.isSpeaking) {
-            _mTts!!.stopSpeaking()
+    fun stop() {
+        _mTts?.let {
+            if (it.isSpeaking) {
+                it.stopSpeaking()
+            }
         }
     }
-    fun onDestroy(){
-        if (_mTts == null) {
-            return
+
+    fun onDestroy() {
+        _mTts?.let {
+            if (it.isSpeaking) {
+                it.stopSpeaking()
+            }
+            it.destroy()
         }
-        if (_mTts!!.isSpeaking) {
-            _mTts!!.stopSpeaking()
-        }
-        _mTts!!.destroy()
     }
 }

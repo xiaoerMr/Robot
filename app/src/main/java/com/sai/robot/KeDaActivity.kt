@@ -1,5 +1,7 @@
 package com.sai.robot
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import com.iflytek.cloud.RecognizerResult
 import com.iflytek.cloud.SpeechError
@@ -13,22 +15,25 @@ import com.sai.robot.wake.WakeManage
 import kotlinx.android.synthetic.main.activity_ke_da.*
 import org.json.JSONException
 import org.json.JSONObject
+
 class KeDaActivity : BaseActivity() {
-    lateinit var mWakeManager:WakeManage
-    lateinit var _iat:IATManager
-    lateinit var _tts:TTSManager
-    val bufferWake:StringBuffer= StringBuffer();
-    val bufferIAT:StringBuffer= StringBuffer();
-    var isStartIAT = false
+    private var mWakeManager: WakeManage? = null
+    private var _iat: IATManager? = null
+    private var _tts: TTSManager? = null
+    private val bufferWake: StringBuffer = StringBuffer()
+    private val bufferIAT: StringBuffer = StringBuffer()
+    private var isStartIAT = false
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mWakeManager != null) {
-            mWakeManager.onDestroy()
+        mWakeManager?.onDestroy()
+        _iat?.let {
+            it.onDestory()
         }
-        if (_iat != null) {
-            _iat.onDestory()
+        _tts?.let {
+            it.onDestroy()
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,37 +41,40 @@ class KeDaActivity : BaseActivity() {
         setContentView(R.layout.activity_ke_da)
 
         // 唤醒
-        vWakeUp.setOnClickListener { startWake()}
+        vWakeUp.setOnClickListener { startWake() }
         //语音听写
         vIAT.setOnClickListener { startIAT() }
         vTTS.setOnClickListener { startTTS("山东飞机上飞机哦噻飞机上的减肥啦是的风景三闾大夫就是东方就死哦东方惊悚地方就是大家发来的科技发达") }
 
     }
-    private fun startTTS(msg:String){
-            _tts = TTSManager()
-            _tts.builfTTs(this)
 
-        _tts.start(msg,object : MySynthesizerListener {
-            override fun onSpeakBegin() {
-                vTTS.setText("---开始阅读--")
-            }
+    private fun startTTS(msg: String) {
+        _tts = TTSManager()
+        _tts?.let {
+            it.builfTTs(this)
+            it.start(msg, object : MySynthesizerListener {
+                override fun onSpeakBegin() {
+                    vTTS.setText("---开始阅读--")
+                }
 
-            override fun onSpeakProgress(percent: Int, beginPos: Int, endPos: Int) {
-                super.onSpeakProgress(percent, beginPos, endPos)
-                vTTS.setText("---阅读进度--${percent}")
-            }
+                override fun onSpeakProgress(percent: Int, beginPos: Int, endPos: Int) {
+                    super.onSpeakProgress(percent, beginPos, endPos)
+                    vTTS.setText("---阅读进度--${percent}")
+                }
 
 
-            override fun onCompleted(p0: SpeechError?) {
-                vTTS.setText("--结束-开始阅读--")
-            }
+                override fun onCompleted(p0: SpeechError?) {
+                    vTTS.setText("--结束-开始阅读--")
+                }
 
-        })
+            })
+        }
+
     }
 
-    private fun startIAT(){
-         _iat = IATManager(this)
-        _iat.starIAT(object : MyRecognizerListener {
+    private fun startIAT() {
+        _iat = IATManager(this)
+        _iat?.starIAT(object : MyRecognizerListener {
 
             override fun onResult(results: RecognizerResult?, p1: Boolean) {
                 bufferIAT.append("----->>>>\n ${results!!.getResultString()} \n<<<<-----\n")
@@ -89,7 +97,7 @@ class KeDaActivity : BaseActivity() {
 
     private fun startWake() {
         mWakeManager = WakeManage(this)
-        mWakeManager.onStartWake(object : MyWakeuperListener {
+        mWakeManager?.onStartWake(object : MyWakeuperListener {
 
             override fun onBeginOfSpeech() {
                 bufferWake.setLength(0)
@@ -110,11 +118,11 @@ class KeDaActivity : BaseActivity() {
                         bufferWake.append("[尾端点]: ${res.optString("eos")}\n")
                         bufferWake.append("---解析成功-本次结束--\n\n")
                         vRecord.setText(bufferWake.toString())
-                    }catch (err: JSONException){
+                    } catch (err: JSONException) {
                         bufferWake.append("---解析失败---\n")
                         vRecord.setText(bufferWake.toString())
                     }
-                }else{
+                } else {
                     bufferWake.append("---监听结果失败---\n")
                     vRecord.setText(bufferWake.toString())
                 }
@@ -126,6 +134,19 @@ class KeDaActivity : BaseActivity() {
                 bufferWake.setLength(0)
             }
         })
+
+
+    }
+
+    /**
+     * 伴生对象
+     * 类初始化顺序： 伴生对象  >  init()  > 次级构造方法 constructor
+     * 类似于静态方法
+     */
+    companion object {
+        fun actionStart(activity: Activity) {
+            activity.startActivity(Intent(activity, KeDaActivity::class.java))
+        }
     }
 }
 
