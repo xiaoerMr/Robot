@@ -13,13 +13,16 @@
         android:text="科大讯飞SDK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/vCoroutines"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="携程"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vRobot" />     app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/vRobot" />
+<!--    app:layout_constraintTop_toTopOf="parent" />-->
+
     <Button
         android:id="@+id/vSVG"
         android:layout_width="wrap_content"
@@ -29,7 +32,14 @@
         app:layout_constraintTop_toBottomOf="@id/vCoroutines" />
 
 
-
+    <Button
+        android:id="@+id/vAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加View"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vCoroutines" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
