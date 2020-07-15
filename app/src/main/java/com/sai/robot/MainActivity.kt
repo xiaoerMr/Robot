@@ -2,7 +2,6 @@ package com.sai.robot
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sai.robot.addview.AddActivity
 import com.sai.robot.corouties.CoroutinesActivity
 import com.sai.robot.svg.SVGActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         vRobot.setOnClickListener { KeDaActivity.actionStart(this) }
         vCoroutines.setOnClickListener { CoroutinesActivity.actionStart(this) }
         vSVG.setOnClickListener { SVGActivity.actionStart(this) }
-        vAdd.setOnClickListener { AddActivity.actionStart(this) }
 
     }
 

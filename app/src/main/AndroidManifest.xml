@@ -24,8 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addview.AddActivity"></activity>
-        <activity android:name=".svg.SVGActivity" />
+        <activity android:name=".svg.SVGActivity"></activity>
         <activity android:name=".corouties.CoroutinesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
