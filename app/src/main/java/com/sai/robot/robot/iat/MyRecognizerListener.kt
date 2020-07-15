@@ -1,8 +1,7 @@
-package com.sai.robot.iat
+package com.sai.robot.robot.iat
 
 import android.os.Bundle
 import com.iflytek.cloud.RecognizerListener
-import com.iflytek.cloud.RecognizerResult
 import com.iflytek.cloud.SpeechError
 
 interface MyRecognizerListener: RecognizerListener {

@@ -1,7 +1,6 @@
-package com.sai.robot.wake
+package com.sai.robot.robot.wake
 
 import android.os.Bundle
-import android.util.Log
 import com.iflytek.cloud.SpeechError
 import com.iflytek.cloud.WakeuperListener
 

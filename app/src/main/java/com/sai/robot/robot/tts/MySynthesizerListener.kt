@@ -1,7 +1,6 @@
-package com.sai.robot.tts
+package com.sai.robot.robot.tts
 
 import android.os.Bundle
-import com.iflytek.cloud.SpeechError
 import com.iflytek.cloud.SynthesizerListener
 
 interface MySynthesizerListener: SynthesizerListener {

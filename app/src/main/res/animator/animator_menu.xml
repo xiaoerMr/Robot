@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <objectAnimator
+
+        android:valueType="pathType"
+        android:duration="1000"
+        android:propertyName="pathData"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite"
+        android:valueFrom="M4,4  L20,4 M4,12 H20 M4,20 L20,20"
+        android:valueTo=  "M4,12 L12,4 M4,12 H20 M4,12 L12,20"
+        />
+
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="strokeColor"
+        android:valueFrom="@color/white"
+        android:valueTo="@color/colorAccent"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite"
+        android:valueType="colorType"
+        />
+</set>

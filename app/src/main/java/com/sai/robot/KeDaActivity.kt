@@ -1,17 +1,17 @@
 package com.sai.robot
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.iflytek.cloud.RecognizerResult
 import com.iflytek.cloud.SpeechError
 import com.iflytek.cloud.WakeuperResult
-import com.sai.robot.iat.IATManager
-import com.sai.robot.iat.MyRecognizerListener
-import com.sai.robot.tts.MySynthesizerListener
-import com.sai.robot.tts.TTSManager
-import com.sai.robot.wake.MyWakeuperListener
-import com.sai.robot.wake.WakeManage
+import com.sai.robot.robot.iat.IATManager
+import com.sai.robot.robot.iat.MyRecognizerListener
+import com.sai.robot.robot.tts.MySynthesizerListener
+import com.sai.robot.robot.tts.TTSManager
+import com.sai.robot.robot.wake.MyWakeuperListener
+import com.sai.robot.robot.wake.WakeManage
 import kotlinx.android.synthetic.main.activity_ke_da.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -20,9 +20,8 @@ class KeDaActivity : BaseActivity() {
     private var mWakeManager: WakeManage? = null
     private var _iat: IATManager? = null
     private var _tts: TTSManager? = null
-    private val bufferWake: StringBuffer = StringBuffer()
-    private val bufferIAT: StringBuffer = StringBuffer()
-    private var isStartIAT = false
+    private val bufferWake = StringBuffer()
+    private val bufferIAT = StringBuffer()
 
     override fun onDestroy() {
         super.onDestroy()
@@ -138,13 +137,8 @@ class KeDaActivity : BaseActivity() {
 
     }
 
-    /**
-     * 伴生对象
-     * 类初始化顺序： 伴生对象  >  init()  > 次级构造方法 constructor
-     * 类似于静态方法
-     */
     companion object {
-        fun actionStart(activity: Activity) {
+        fun actionStart(activity: AppCompatActivity) {
             activity.startActivity(Intent(activity, KeDaActivity::class.java))
         }
     }
