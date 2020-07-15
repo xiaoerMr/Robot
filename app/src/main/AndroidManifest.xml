@@ -34,6 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".KeDaActivity" />
+        <activity android:name=".addview.AddActivity"/>
     </application>
 
 </manifest>
