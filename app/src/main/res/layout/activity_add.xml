@@ -7,10 +7,41 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:text="button"
+        android:id="@+id/buttonPanel"
         android:background="@color/content_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:showDividers="beginning|middle|end"
+        app:dividerPadding="3dp"
+        app:divider="@drawable/line_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel">
+
+        <include
+            android:id="@+id/name"
+            layout="@layout/view_show_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+        <include
+            android:id="@+id/address"
+            layout="@layout/view_show_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+        <include
+            android:id="@+id/phone"
+            layout="@layout/view_show_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
