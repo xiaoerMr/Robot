@@ -24,7 +24,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".svg.SVGActivity"></activity>
+        <activity android:name=".dome.PagingActivity"></activity>
+        <activity android:name=".svg.SVGActivity" />
         <activity android:name=".corouties.CoroutinesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -34,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".KeDaActivity" />
-        <activity android:name=".addview.AddActivity"/>
+        <activity android:name=".addview.AddActivity" />
     </application>
 
 </manifest>
