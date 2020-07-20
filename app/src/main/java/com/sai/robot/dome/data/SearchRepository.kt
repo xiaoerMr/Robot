@@ -15,6 +15,13 @@ class SearchRepository {
 //            listOf("1", "2", "3", "4", "5", "6", "7", "8")
 //        }
 //
-        return listOf("1", "2", "3", "4", "5", "6", "7", "8")
+        return listOf("$query = 1", "$query = 2", "$query = 3", "$query = 4", "$query = 5", "$query = 6", "$query = 7", "$query = 8")
+    }
+
+    fun getDataFormNet(query:String):List<String>{
+        // serviceApi.getSearch(query)
+        // success  error
+        // 广播获取到了结果，准你们备接受  ConflatedBroadcastChannel.offer(list)
+        return listOf()
     }
 }
