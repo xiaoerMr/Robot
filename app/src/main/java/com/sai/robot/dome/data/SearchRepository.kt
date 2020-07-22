@@ -1,27 +1,32 @@
 package com.sai.robot.dome.data
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.sai.robot.http.RequestLocal
+import com.sai.robot.http.RequestNetWork
 
 /**
  * 提供数据 - http - sql
  */
-class SearchRepository {
+class SearchRepository() {
+    private val requestNetWork = RequestNetWork()
+    private val requestLocal = RequestLocal()
 
+    suspend fun getData(query: String): List<String> {
 
-    fun getData(query:String):List<String>{
-//        val launch = GlobalScope.launch {
+//        //接口 单独封装网络请求，扩展性
+//        requestNetWork.getDiscovery(query)
 //
-//            listOf("1", "2", "3", "4", "5", "6", "7", "8")
-//        }
-//
-        return listOf("$query = 1", "$query = 2", "$query = 3", "$query = 4", "$query = 5", "$query = 6", "$query = 7", "$query = 8")
-    }
+//        //接口 单独封装本地缓存，扩展性
+//        requestLocal.cacalData()
 
-    fun getDataFormNet(query:String):List<String>{
-        // serviceApi.getSearch(query)
-        // success  error
-        // 广播获取到了结果，准你们备接受  ConflatedBroadcastChannel.offer(list)
-        return listOf()
+        return listOf(
+            "$query = 1",
+            "$query = 2",
+            "$query = 3",
+            "$query = 4",
+            "$query = 5",
+            "$query = 6",
+            "$query = 7",
+            "$query = 8"
+        )
     }
 }

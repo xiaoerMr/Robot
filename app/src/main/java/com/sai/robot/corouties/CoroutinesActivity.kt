@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.lifecycleScope
 import com.sai.robot.R
 import kotlinx.android.synthetic.main.activity_coroutines.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 
 class CoroutinesActivity : AppCompatActivity() {
 
@@ -18,11 +20,41 @@ class CoroutinesActivity : AppCompatActivity() {
 
         supportActionBar?.title = "协程"
 
+//        CoroutineScope()
+//        SequenceScope
 
 //        test()
 //        testGetData()
-        GlobalScope.launch {
-            vContext.text = testGetData2()
+//        GlobalScope.launch {
+//            vContext.text = testGetData2()
+//        }
+//        fun4()//flow
+    }
+
+    private fun fun4() {
+        val launch = lifecycleScope.launch(Dispatchers.IO) {
+            flow<Int> {
+                for (i in 1..3) {
+                    emit(i)
+                }
+                println("name = ${Thread.currentThread().name}")
+            }
+                .flowOn(Dispatchers.Unconfined)//IO线程的协程中
+                .filter {
+                    println("--过滤--name = ${Thread.currentThread().name}")
+                    it % 2 == 1
+                }
+                .map {
+                    println("--转换--name = ${Thread.currentThread().name}")
+                    " -->  $it "
+                }//转换
+                .catch { e -> println("catch = ${e.message}") }
+                .onCompletion { println("--flow 完成 --name = ${Thread.currentThread().name}") }
+                .onStart { println("--flow 开始 --name = ${Thread.currentThread().name}") }
+                .onEmpty { println("--flow 空 --name = ${Thread.currentThread().name}") }
+                .collect {
+                    println("$it name = ${Thread.currentThread().name}")
+                }
         }
     }
 
@@ -39,7 +71,7 @@ class CoroutinesActivity : AppCompatActivity() {
         buffer.append("--结束-\n")
     }
 
-    private suspend fun testGetData2() :String{
+    private suspend fun testGetData2(): String {
         // 异步 async 无返回值
         buffer.append("--完成请求 1=\n")
         val name = GlobalScope.async {

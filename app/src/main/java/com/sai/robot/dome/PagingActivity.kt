@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.sai.robot.R
 import com.sai.robot.dome.adapter.RecycleAdapter
 import com.sai.robot.dome.data.SearchRepository
-import com.sai.robot.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_paging.*
 
 /**
@@ -56,7 +55,7 @@ class PagingActivity : AppCompatActivity() {
             override fun onTextChanged(char: CharSequence?, start: Int, before: Int, count: Int) {
                 char?.let {
                     if (!char.isNullOrEmpty()) {
-                        viewModel.getNewData(it.toString())
+                        viewModel.getNewDataBySearch(it.toString())
                     }
                 }
             }
@@ -76,7 +75,7 @@ class PagingActivity : AppCompatActivity() {
         vRecycler.adapter = recycleAdapter
 
         //订阅Livedata 并更新到 recycle view
-        viewModel.queryLiveData.observe(this, Observer<List<String>> {
+        viewModel.queryResult.observe(this, Observer<List<String>> {
             if (it.isNullOrEmpty()) {
                 if (firstTime) {
                     vRecycler.visibility = View.GONE
