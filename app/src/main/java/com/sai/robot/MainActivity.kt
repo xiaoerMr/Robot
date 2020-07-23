@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         vSVG.setOnClickListener { SVGActivity.actionStart(this) }
         vAdd.setOnClickListener { AddActivity.actionStart(this) }
         vDome.setOnClickListener { PagingActivity.actionStart(this) }
-
+        vDome.isSelected = true
     }
 
 
