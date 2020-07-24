@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 open class BaseFragment :Fragment() {
+    public val TAG = this.javaClass.simpleName
 
     /**
      * Fragment中显示加载等待的控件。

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="306dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/vColumnTs"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toTopOf="@id/vColumnBs"
+        app:layout_constraintEnd_toStartOf="@id/vColumnTe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/vColumnTe"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginStart="2dp"
+        app:layout_constraintBottom_toTopOf="@id/vColumnBe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vColumnTs"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/vColumnBs"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/vColumnBe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vColumnTs"
+        tools:src="@drawable/ic_launcher_background" />
+
+
+    <ImageView
+        android:id="@+id/vColumnBe"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vColumnBs"
+        app:layout_constraintTop_toBottomOf="@id/vColumnTe"
+        tools:src="@drawable/ic_launcher_background" />
+    <TextView
+        android:id="@+id/vColumnTeT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/vColumnTe"
+        app:layout_constraintEnd_toEndOf="@id/vColumnTe"
+        app:layout_constraintStart_toStartOf="@id/vColumnTe"
+        app:layout_constraintTop_toTopOf="@id/vColumnTe" />
+    <TextView
+        android:id="@+id/vColumnBeT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/vColumnBe"
+        app:layout_constraintEnd_toEndOf="@id/vColumnBe"
+        app:layout_constraintStart_toStartOf="@id/vColumnBe"
+        app:layout_constraintTop_toTopOf="@id/vColumnBe" />
+
+    <TextView
+        android:id="@+id/vColumnBsT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/vColumnBs"
+        app:layout_constraintEnd_toEndOf="@id/vColumnBs"
+        app:layout_constraintStart_toStartOf="@id/vColumnBs"
+        app:layout_constraintTop_toTopOf="@id/vColumnBs" />
+
+    <TextView
+        android:id="@+id/vColumnTsT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/vColumnTs"
+        app:layout_constraintEnd_toEndOf="@id/vColumnTs"
+        app:layout_constraintStart_toStartOf="@id/vColumnTs"
+        app:layout_constraintTop_toTopOf="@id/vColumnTs" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

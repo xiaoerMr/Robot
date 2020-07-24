@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#fafafa</color>
-    <color name="colorPrimaryDark">#fafafa</color>
+    <color name="colorPrimary">#07E8C1</color>
+    <color name="colorPrimaryDark">#065B49</color>
     <color name="colorAccent">#61f2d4</color>
 
     <color name="colorAccentAlpha60">#6661f2d4</color>
