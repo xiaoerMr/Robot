@@ -1,3 +1,4 @@
+include ':jetpack'
 include ':myeye'
 rootProject.name='Robot'
 include ':app'
