@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.sai.robot.addview.AddActivity
 import com.sai.robot.corouties.CoroutinesActivity
 import com.sai.robot.dome.PagingActivity
+import com.sai.robot.page.PageActivity
 import com.sai.robot.svg.SVGActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         vSVG.setOnClickListener { SVGActivity.actionStart(this) }
         vAdd.setOnClickListener { AddActivity.actionStart(this) }
         vDome.setOnClickListener { PagingActivity.actionStart(this) }
-        vDome.isSelected = true
+        vPage3.setOnClickListener { }//PageActivity.actionStart(this) }
+//        vDome.isSelected = true
     }
 
 
