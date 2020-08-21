@@ -1,22 +1,17 @@
 package com.sai.jetpack
 
-import android.R.attr.banner
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
 import com.sai.jetpack.adapter.AdapterBanner
 import com.sai.jetpack.bean.ResBannerItem
+import com.sai.jetpack.repository.RepositoryMain
+import com.sai.jetpack.utils.ToastUtils
 import com.sai.jetpack.vm.MainViewModel
-import com.youth.banner.Banner
-import com.youth.banner.adapter.BannerAdapter
-import com.youth.banner.adapter.BannerImageAdapter
-import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,11 +19,13 @@ class MainActivity : AppCompatActivity() {
     private val adapterBanner by lazy {
         AdapterBanner(emptyList())
     }
+//    private val mViewModel: MainViewModel by viewModels()
 
+//    private val mViewModel by viewModel<MainViewModel>()
     private val mViewModel by lazy {
         ViewModelProvider(
             this,
-            Injector.getMainViewModelFactory()
+            Injector.getMainViewModelFactory(RepositoryMain())
         ).get(MainViewModel::class.java)
     }
 
@@ -40,19 +37,30 @@ class MainActivity : AppCompatActivity() {
 
         //请求banner 数据
         mViewModel.resultBanner.observe(this, Observer { result ->
-            result.map {
-                vBanner.let { banner ->
-                    banner.addBannerLifecycleObserver(this)
-                    banner.setIndicator(CircleIndicator(this))
-                    banner.setBannerRound(20f)
-
-                    adapterBanner.setDatas(it)
-                    banner.adapter = adapterBanner
+            if (result.isSuccess) {
+                result.map {
+                    setBanner(it)
                 }
+            } else {
+                ToastUtils.show(vBanner, "暂时没有数据")
             }
         })
         mViewModel.onRefreshBanner()
+        mViewModel.bann.observe(this, Observer {
+        })
+        mViewModel.dd()
+        // 列表数据
+    }
 
+    private fun setBanner(it: List<ResBannerItem>) {
+        vBanner.let { banner ->
+            banner.addBannerLifecycleObserver(this)
+            banner.setIndicator(CircleIndicator(this))
+            banner.setBannerRound(20f)
+
+            adapterBanner.setDatas(it)
+            banner.adapter = adapterBanner
+        }
     }
 
 }
