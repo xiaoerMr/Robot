@@ -3,9 +3,11 @@ package com.sai.robot
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sai.robot.addview.AddActivity
+import com.sai.robot.aidl.AidlActivity
 import com.sai.robot.corouties.CoroutinesActivity
 import com.sai.robot.dome.PagingActivity
-import com.sai.robot.page.PageActivity
+import com.sai.robot.socket.OkSocketActivity
+import com.sai.robot.socket.SocketActivity
 import com.sai.robot.svg.SVGActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         vAdd.setOnClickListener { AddActivity.actionStart(this) }
         vDome.setOnClickListener { PagingActivity.actionStart(this) }
         vPage3.setOnClickListener { }//PageActivity.actionStart(this) }
+//        vSocket.setOnClickListener { OkSocketActivity.actionStart(this) }
+        vSocket.setOnClickListener { SocketActivity.actionStart(this) }
+        vAidl.setOnClickListener { AidlActivity.actionStart(this) }
 //        vDome.isSelected = true
     }
 

@@ -24,7 +24,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".page.PageActivity"></activity>
+        <activity android:name=".aidl.AidlActivity"></activity>
+        <activity android:name=".socket.OkSocketActivity" />
+        <activity android:name=".socket.SocketActivity" />
+        <activity android:name=".page.PageActivity" />
         <activity android:name=".dome.PagingActivity" />
         <activity android:name=".svg.SVGActivity" />
         <activity android:name=".corouties.CoroutinesActivity" />

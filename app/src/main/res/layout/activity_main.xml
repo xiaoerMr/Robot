@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="添加View"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vSVG" />
 
@@ -45,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dome"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vAdd" />
 
@@ -53,8 +55,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="vPage3"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vDome" />
+
+    <Button
+        android:id="@+id/vSocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vSocket"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vPage3" />
+
+
+    <Button
+        android:id="@+id/vAidl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vAidl"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vSocket" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,19 +36,23 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.view_behavior)
 
         //请求banner 数据
-        mViewModel.resultBanner.observe(this, Observer { result ->
-            if (result.isSuccess) {
-                result.map {
-                    setBanner(it)
-                }
-            } else {
-                ToastUtils.show(vBanner, "暂时没有数据")
-            }
-        })
-        mViewModel.onRefreshBanner()
-        mViewModel.bann.observe(this, Observer {
-        })
+//        mViewModel.resultBanner.observe(this, Observer { result ->
+//            if (result.isSuccess) {
+//                result.map {
+//                    setBanner(it)
+//                }
+//            } else {
+//                ToastUtils.show(vBanner, "暂时没有数据")
+//            }
+//        })
+//        mViewModel.onRefreshBanner()
         mViewModel.dd()
+        mViewModel.aa.observe(this, Observer { result ->
+            setBanner(result)
+        })
+//        mViewModel.bann.observe(this, Observer {
+//        })
+//        mViewModel.dd()
         // 列表数据
     }
 
